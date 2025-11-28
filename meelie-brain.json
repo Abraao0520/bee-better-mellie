@@ -1,0 +1,119 @@
+{
+  "version": "1.0",
+  "description": "Núcleo de regras determinísticas da Mellie para recomendações de treino, alimentação e hábitos baseadas em humor, energia, tempo e limitações.",
+  
+  "states": {
+    "feliz":  { "modifier": "leve" },
+    "neutro": { "modifier": "moderado" },
+    "triste": { "modifier": "leve" },
+    "ansioso": { "modifier": "leve" },
+    "cansado": { "modifier": "leve" },
+    "motivado": { "modifier": "alto" }
+  },
+
+  "mapping": {
+    "leve": {
+      "train": "leve",
+      "food": "leve",
+      "habit": "leve"
+    },
+    "moderado": {
+      "train": "moderado",
+      "food": "moderado",
+      "habit": "moderado"
+    },
+    "alto": {
+      "train": "alto",
+      "food": "alto",
+      "habit": "moderado"
+    },
+    "restrito": {
+      "train": "leve",
+      "food": "leve",
+      "habit": "leve"
+    }
+  },
+
+  "limitations_rules": {
+    "force_modes": {
+      "com_dor": {
+        "train": "leve",
+        "food": "leve",
+        "habit": "leve"
+      },
+      "cansaco": {
+        "train": "leve"
+      },
+      "sem_tempo": {
+        "train": "leve",
+        "habit": "leve"
+      },
+      "ansiedade": {
+        "train": "leve",
+        "habit": "leve"
+      }
+    }
+  },
+
+  "suggestions": {
+    "train": {
+      "leve": [
+        "Alongamento leve de 5 minutos",
+        "Caminhada curta de 10 minutos",
+        "Mobilidade articular suave"
+      ],
+      "moderado": [
+        "Caminhada de 15–20 minutos",
+        "Treino leve de calistenia",
+        "Yoga rápida"
+      ],
+      "alto": [
+        "Corrida leve 20–30 minutos",
+        "Circuito funcional",
+        "Treino de resistência moderado"
+      ]
+    },
+
+    "food": {
+      "leve": [
+        "Fruta + água",
+        "Iogurte leve",
+        "Vitamina simples (banana + leite)"
+      ],
+      "moderado": [
+        "Frango + arroz + salada",
+        "Tapioca com ovo",
+        "Sanduíche saudável"
+      ],
+      "alto": [
+        "Refeição completa pós-treino",
+        "Macarrão com proteína",
+        "Peixe + legumes + carboidrato"
+      ]
+    },
+
+    "habit": {
+      "leve": [
+        "Beber água",
+        "Respirar fundo por 1 minuto",
+        "Organizar a mesa"
+      ],
+      "moderado": [
+        "Ler por 10 minutos",
+        "Planejar o dia",
+        "Meditar 3 minutos"
+      ],
+      "alto": [
+        "Estudar 30 minutos",
+        "Fazer caminhada longa",
+        "Criar um plano semanal"
+      ]
+    }
+  },
+
+  "reasons": {
+    "default": "A recomendação foi adaptada considerando seu humor atual ({mood}) e seu tempo disponível ({time} minutos).",
+    "pain": "Você relatou dor, então adaptei tudo para opções mais leves e seguras.",
+    "no_time": "Como você tem pouco tempo, escolhi algo rápido, prático e eficiente."
+  }
+}
