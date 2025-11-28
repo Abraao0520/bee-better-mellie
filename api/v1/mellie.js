@@ -64,3 +64,5 @@ export default async function handler(req, res) {
     });
   }
 }
+import fs from "fs";
+const brain = JSON.parse(fs.readFileSync("mellie-brain.json", "utf8"));
