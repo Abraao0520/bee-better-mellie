@@ -66,3 +66,17 @@ export default async function handler(req, res) {
 }
 import fs from "fs";
 const brain = JSON.parse(fs.readFileSync("mellie-brain.json", "utf8"));
+import fs from "fs";
+import path from "path";
+
+export default async function handler(req, res) {
+  try {
+    const filePath = path.join(process.cwd(), "mellie-brain.json");
+    const brain = JSON.parse(fs.readFileSync(filePath, "utf8"));
+
+    res.status(200).json({ message: "Mellie OK", brain });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Internal Mellie API Error" });
+  }
+}
